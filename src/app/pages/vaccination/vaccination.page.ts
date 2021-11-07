@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { FirebaseService } from 'src/app/services/firebase.service';
 import { ModalStateDatePage } from '../modal-state-date/modal-state-date.page';
 
 @Component({
@@ -9,7 +10,7 @@ import { ModalStateDatePage } from '../modal-state-date/modal-state-date.page';
 })
 export class VaccinationPage implements OnInit {
 
-  vaccine_data: {
+  public vaccine_data: {
     date: any;
     state: string;
     daily_partial: number;
@@ -32,13 +33,77 @@ export class VaccinationPage implements OnInit {
     astra2: number;
     cansino: number;
     pending: number;
-  }
+  } = {
+    date: "",
+    state: "",
+    daily_partial: 0,
+    daily_full: 0,
+    daily: 0,
+    daily_partial_child: 0,
+    daily_full_child: 0,
+    daily_booster: 0,
+    cumul_partial: 0,
+    cumul_full: 0,
+    cumul: 0,
+    cumul_partial_child: 0,
+    cumul_full_child: 0,
+    cumul_booster: 0,
+    pfizer1: 0,
+    pfizer2: 0,
+    sinovac1: 0,
+    sinovac2: 0,
+    astra1: 0,
+    astra2: 0,
+    cansino: 0,
+    pending: 0,
+  };
+  public data: any;
+  public test_data: any;
+  public all_data: any;
+  public sd_data: any;
 
   constructor(
-    public moc: ModalController
+    public moc: ModalController,
+    public fb: FirebaseService
   ) { }
 
   ngOnInit() {
+    // this.getData()
+    
+    // this.getTestData();
+
+    this.filterStateDate('2021-02-26', 'Malaysia');
+
+    // this.getFirestoreData();
+  }
+
+  // async getTestData() {
+  //   let id = '0jUYSkMg6PbSXD5KPP7o'
+  //   await this.fb.testRecord(id).then((res: any) => {
+  //     this.test_data = res;
+  //     console.log(this.test_data)
+  //   });
+  // }
+
+  async getData() {
+    await this.fb.getAllRecords().then((res => {
+      this.data = res;
+      console.log(this.data)
+    }))
+  }
+
+  async filterStateDate(date, state) {
+    await this.fb.getStateDateRecords(date, state).then(res => {
+      this.sd_data = res
+      console.log("filterStateDate(" + date + ", " + state + ")" , this.sd_data)
+    })
+  }
+
+  getFirestoreData() {
+    this.fb.readAllRecords().then(res => {
+      this.all_data = res;
+      // console.log(this.all_data)
+    })
   }
 
   async selectStateDate() {

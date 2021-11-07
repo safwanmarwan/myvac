@@ -46,15 +46,15 @@
                     </ion-list-header>
                     <ion-item>
                       <ion-label>Fully Vaccinated</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">24, 625, 458</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">{{sd_data.cumul_full}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Partially Vaccinated</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">25, 516, 476</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">{{sd_data.cumul_partial}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Boosters</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">81, 465</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">{{sd_data.cumul_booster}}</ion-label>
                     </ion-item>
                   </ion-list>
                 </ion-col>
@@ -67,15 +67,15 @@
                     </ion-list-header>
                     <ion-item>
                       <ion-label>Fully Vaccinated</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">+ 2, 240</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ {{sd_data.daily_full}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Partially Vaccinated</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">+ 240</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ {{sd_data.daily_partial}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Boosters</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">+ 312</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ {{sd_data.daily_booster}}</ion-label>
                     </ion-item>
                   </ion-list>
                 </ion-col>

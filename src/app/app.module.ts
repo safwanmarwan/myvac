@@ -3,9 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import firebase from 'firebase';
+import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [AppComponent],
