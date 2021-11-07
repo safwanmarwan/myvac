@@ -72,7 +72,7 @@ export class VaccinationPage implements OnInit {
     
     // this.getTestData();
 
-    this.filterStateDate('2021-02-26', 'Malaysia');
+    this.filterStateDate('2021-10-31', 'Malaysia'); // date as of last data
 
     // this.getFirestoreData();
   }
@@ -95,6 +95,30 @@ export class VaccinationPage implements OnInit {
   async filterStateDate(date, state) {
     await this.fb.getStateDateRecords(date, state).then(res => {
       this.sd_data = res
+
+      this.vaccine_data.date = this.sd_data.date
+      this.vaccine_data.state = this.sd_data.state
+      this.vaccine_data.daily_partial = this.sd_data.daily_partial
+      this.vaccine_data.daily_full = this.sd_data.daily_full
+      this.vaccine_data.daily = this.sd_data.daily
+      this.vaccine_data.daily_partial_child = this.sd_data.daily_partial_child
+      this.vaccine_data.daily_full_child = this.sd_data.daily_full_child
+      this.vaccine_data.daily_booster = this.sd_data.daily_booster
+      this.vaccine_data.cumul_partial = this.sd_data.cumul_partial
+      this.vaccine_data.cumul_full = this.sd_data.cumul_full
+      this.vaccine_data.cumul = this.sd_data.cumul
+      this.vaccine_data.cumul_partial_child = this.sd_data.cumul_partial_child
+      this.vaccine_data.cumul_full_child = this.sd_data.cumul_full_child
+      this.vaccine_data.cumul_booster = this.sd_data.cumul_booster
+      this.vaccine_data.pfizer1 = this.sd_data.pfizer1
+      this.vaccine_data.pfizer2 = this.sd_data.pfizer2
+      this.vaccine_data.sinovac1 = this.sd_data.sinovac1
+      this.vaccine_data.sinovac2 = this.sd_data.sinovac2
+      this.vaccine_data.astra1 = this.sd_data.astra1
+      this.vaccine_data.astra2 = this.sd_data.astra2
+      this.vaccine_data.cansino = this.sd_data.cansino
+      this.vaccine_data.pending = this.sd_data.pending
+    
       console.log("filterStateDate(" + date + ", " + state + ")" , this.sd_data)
     })
   }
@@ -111,16 +135,20 @@ export class VaccinationPage implements OnInit {
       component: ModalStateDatePage,
       backdropDismiss: false,
       componentProps: {
-        // state: this.vaccine_data.state,
-        // date: this.vaccine_data.date,
+        state: this.vaccine_data.state,
+        date: this.vaccine_data.date,
       },
     });
 
     // modal.onDidDismiss().then((res) => {
-    //   this.updateViewedStrategy(this.selected_strategy);
+    //   this.filterStateDate(this.selected_strategy);
     // });
 
     return await modal.present();
+  }
+
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
 }

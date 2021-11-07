@@ -9,11 +9,11 @@
     <ion-row class="ion-padding">
       <ion-col class="ion-padding-horizontal" size="6" style="border-right: 1px solid #000000;">
         <p class="ion-no-margin" style="font-weight: 300;">State</p>
-        <p class="ion-no-margin">Malaysia</p>
+        <p class="ion-no-margin">{{vaccine_data.state}}</p>
       </ion-col>
       <ion-col class="ion-padding-horizontal" size="6">
         <p class="ion-no-margin" style="font-weight: 300;">Date</p>
-        <p class="ion-no-margin">30/10/2021</p>
+        <p class="ion-no-margin">{{vaccine_data.date}}</p>
       </ion-col>
     </ion-row>
     <ion-row class="ion-padding-horizontal">
@@ -46,15 +46,15 @@
                     </ion-list-header>
                     <ion-item>
                       <ion-label>Fully Vaccinated</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">{{sd_data.cumul_full}}</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">{{numberWithCommas(vaccine_data.cumul_full + vaccine_data.cumul_full_child)}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Partially Vaccinated</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">{{sd_data.cumul_partial}}</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">{{numberWithCommas(vaccine_data.cumul_partial + vaccine_data.cumul_partial_child)}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Boosters</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">{{sd_data.cumul_booster}}</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">{{numberWithCommas(vaccine_data.cumul_booster)}}</ion-label>
                     </ion-item>
                   </ion-list>
                 </ion-col>
@@ -67,15 +67,15 @@
                     </ion-list-header>
                     <ion-item>
                       <ion-label>Fully Vaccinated</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">+ {{sd_data.daily_full}}</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ {{numberWithCommas(vaccine_data.daily_full)}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Partially Vaccinated</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">+ {{sd_data.daily_partial}}</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ {{numberWithCommas(vaccine_data.daily_partial)}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Boosters</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">+ {{sd_data.daily_booster}}</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ {{numberWithCommas(vaccine_data.daily_booster)}}</ion-label>
                     </ion-item>
                   </ion-list>
                 </ion-col>
@@ -103,21 +103,21 @@
                   <ion-item>
                     <ion-label>
                       <h2>Full</h2>
-                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                      <h2 style="font-weight: 600;">{{numberWithCommas(vaccine_data.daily_full)}}</h2>
                     </ion-label>
                   </ion-item>
                   <ion-item>
                     <ion-label>
                       <h2>Partial</h2>
-                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                      <h2 style="font-weight: 600;">{{numberWithCommas(vaccine_data.daily_partial)}}</h2>
                     </ion-label>
                   </ion-item>
-                  <ion-item>
+                  <!-- <ion-item>
                     <ion-label>
                       <h2>Booster</h2>
-                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                      <h2 style="font-weight: 600;">{{vaccine_data.daily_full}}</h2>
                     </ion-label>
-                  </ion-item>
+                  </ion-item> -->
                 </ion-list>
               </ion-col>
             </ion-row>
@@ -142,21 +142,21 @@
                   <ion-item>
                     <ion-label>
                       <h2>Full</h2>
-                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                      <h2 style="font-weight: 600;">{{numberWithCommas(vaccine_data.daily_full_child)}}</h2>
                     </ion-label>
                   </ion-item>
                   <ion-item>
                     <ion-label>
                       <h2>Partial</h2>
-                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                      <h2 style="font-weight: 600;">{{numberWithCommas(vaccine_data.daily_partial_child)}}</h2>
                     </ion-label>
                   </ion-item>
-                  <ion-item>
+                  <!-- <ion-item>
                     <ion-label>
                       <h2>Booster</h2>
                       <h2 style="font-weight: 600;">24, 625, 458</h2>
                     </ion-label>
-                  </ion-item>
+                  </ion-item> -->
                 </ion-list>
               </ion-col>
             </ion-row>
@@ -178,7 +178,7 @@
                 </ion-row>
             </ion-card-header>
             <ion-card-content>
-              <ion-row>
+              <!-- <ion-row>
                 <ion-col>
                   <ion-list lines="none">
                     <ion-list-header>
@@ -186,23 +186,23 @@
                     </ion-list-header>
                     <ion-item>
                       <ion-label>AstraZeneca</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">4, 625, 458</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">{{numberWithCommas(vaccine_data.astra1 + vaccine_data.astra2)}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Cansino</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">5, 516, 476</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">{{numberWithCommas(vaccine_data.cansino)}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Pfizer</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">81, 465</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">{{numberWithCommas(vaccine_data.pfizer1 + vaccine_data.pfizer2)}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Sinovac</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">2, 240</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">{{numberWithCommas(vaccine_data.sinovac1 + vaccine_data.sinovac2)}}</ion-label>
                     </ion-item>
                   </ion-list>
                 </ion-col>
-              </ion-row>
+              </ion-row> -->
               <ion-row>
                 <ion-col>
                   <ion-list lines="none">
@@ -211,19 +211,19 @@
                     </ion-list-header>
                     <ion-item>
                       <ion-label>AstraZeneca</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">+ 5, 458</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ {{numberWithCommas(vaccine_data.astra1 + vaccine_data.astra2)}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Cansino</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">+ 6, 476</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ {{numberWithCommas(vaccine_data.cansino)}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Pfizer</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">+ 465</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ {{numberWithCommas(vaccine_data.pfizer1 + vaccine_data.pfizer2)}}</ion-label>
                     </ion-item>
                     <ion-item>
                       <ion-label>Sinovac</ion-label>
-                      <ion-label slot="end" style="font-weight: 600;">+ 240</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ {{numberWithCommas(vaccine_data.sinovac1 + vaccine_data.sinovac2)}}</ion-label>
                     </ion-item>
                   </ion-list>
                 </ion-col>

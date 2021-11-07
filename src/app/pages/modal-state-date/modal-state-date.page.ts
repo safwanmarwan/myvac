@@ -8,8 +8,8 @@ import { ModalController } from '@ionic/angular';
 })
 export class ModalStateDatePage implements OnInit {
 
-  // @Input() public state: string;
-  // @Input() public date: any;
+  @Input() public state: string;
+  @Input() public date: any;
 
   selected_state: string;
   selected_date: any;
@@ -24,15 +24,13 @@ export class ModalStateDatePage implements OnInit {
   constructor(
     private mc: ModalController
   ) {
-    this.selected_state = "Malaysia";
-    this.selected_date = "2021-10-30"
   }
 
   ngOnInit() {
   }
 
   selectStateDate() {
-    console.log("Successfully select state " + this.selected_state + " as for " + this.selected_date);
+    console.log("Successfully select state " + this.state + " as for " + this.date);
     this.closeModal();
   }
 
