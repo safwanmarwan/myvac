@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'vaccination',
     loadChildren: () => import('./pages/vaccination/vaccination.module').then( m => m.VaccinationPageModule)
+  },  {
+    path: 'modal-state-date',
+    loadChildren: () => import('./pages/modal-state-date/modal-state-date.module').then( m => m.ModalStateDatePageModule)
   }
+
 ];
 @NgModule({
   imports: [
