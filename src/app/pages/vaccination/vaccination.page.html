@@ -1,9 +1,237 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>vaccination</ion-title>
+    <ion-title>Vaccination in Malaysia</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row class="ion-padding">
+      <ion-col class="ion-padding-horizontal" size="6" style="border-right: 1px solid #000000;">
+        <p class="ion-no-margin" style="font-weight: 300;">State</p>
+        <p class="ion-no-margin">Malaysia</p>
+      </ion-col>
+      <ion-col class="ion-padding-horizontal" size="6">
+        <p class="ion-no-margin" style="font-weight: 300;">Date</p>
+        <p class="ion-no-margin">30/10/2021</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-horizontal">
+      <ion-col class="ion-no-padding">
+        <ion-button expand="block">
+          <ion-icon name="options-outline" class="ion-padding-end"></ion-icon>
+          Select State / Date
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+            <ion-card-header>
+                <ion-row class="ion-no-margin">
+                    <ion-col>
+                        <ion-card-title>
+                            <ion-card-title>Population Vaccinated</ion-card-title>
+                            <ion-card-subtitle style="font-weight: 300;">In Malaysia</ion-card-subtitle>
+                        </ion-card-title>
+                    </ion-col>
+                </ion-row>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-row>
+                <ion-col>
+                  <ion-list lines="none">
+                    <ion-list-header>
+                      <h2 style="font-weight: 300;">Total vaccination</h2>
+                    </ion-list-header>
+                    <ion-item>
+                      <ion-label>Fully Vaccinated</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">24, 625, 458</ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Partially Vaccinated</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">25, 516, 476</ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Boosters</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">81, 465</ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-list lines="none">
+                    <ion-list-header>
+                      <h2 style="font-weight: 300;">Daily vaccination</h2>
+                    </ion-list-header>
+                    <ion-item>
+                      <ion-label>Fully Vaccinated</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ 2, 240</ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Partially Vaccinated</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ 240</ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Boosters</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ 312</ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
+    <ion-row>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header class="ion-no-padding ion-padding-top ion-padding-horizontal">
+              <ion-row class="ion-no-margin">
+                  <ion-col>
+                    <ion-card-title>Adult</ion-card-title>
+                    <ion-card-subtitle style="font-weight: 300;">Vaccinations</ion-card-subtitle>
+                  </ion-col>
+              </ion-row>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <ion-list lines="none">
+                  <ion-item>
+                    <ion-label>
+                      <h2>Full</h2>
+                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <h2>Partial</h2>
+                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <h2>Booster</h2>
+                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+      </ion-card>
+      </ion-col>
+      
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header class="ion-no-padding ion-padding-top ion-padding-horizontal">
+              <ion-row class="ion-no-margin">
+                  <ion-col>
+                    <ion-card-title>Adolescents</ion-card-title>
+                    <ion-card-subtitle style="font-weight: 300;">Vaccinations</ion-card-subtitle>
+                  </ion-col>
+              </ion-row>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <ion-list lines="none">
+                  <ion-item>
+                    <ion-label>
+                      <h2>Full</h2>
+                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <h2>Partial</h2>
+                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>
+                      <h2>Booster</h2>
+                      <h2 style="font-weight: 600;">24, 625, 458</h2>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+      </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card>
+            <ion-card-header>
+                <ion-row class="ion-no-margin">
+                    <ion-col>
+                        <ion-card-title>
+                            <ion-card-title>Vaccine Brands</ion-card-title>
+                        </ion-card-title>
+                    </ion-col>
+                </ion-row>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-row>
+                <ion-col>
+                  <ion-list lines="none">
+                    <ion-list-header>
+                      <h2 style="font-weight: 300;">Total vaccine taken by brand</h2>
+                    </ion-list-header>
+                    <ion-item>
+                      <ion-label>AstraZeneca</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">4, 625, 458</ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Cansino</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">5, 516, 476</ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Pfizer</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">81, 465</ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Sinovac</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">2, 240</ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-list lines="none">
+                    <ion-list-header>
+                      <h2 style="font-weight: 300;">Daily vaccine taken by brand</h2>
+                    </ion-list-header>
+                    <ion-item>
+                      <ion-label>AstraZeneca</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ 5, 458</ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Cansino</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ 6, 476</ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Pfizer</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ 465</ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Sinovac</ion-label>
+                      <ion-label slot="end" style="font-weight: 600;">+ 240</ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>
