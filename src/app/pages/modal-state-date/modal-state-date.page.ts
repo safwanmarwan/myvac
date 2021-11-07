@@ -33,6 +33,7 @@ export class ModalStateDatePage implements OnInit {
 
   selectStateDate() {
     console.log("Successfully select state " + this.selected_state + " as for " + this.selected_date);
+    this.closeModal();
   }
 
   closeModal() {
