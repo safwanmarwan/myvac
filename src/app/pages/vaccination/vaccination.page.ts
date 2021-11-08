@@ -75,24 +75,8 @@ export class VaccinationPage implements OnInit {
     this.state = this.ar.snapshot.paramMap.get('state')
     this.date = this.ar.snapshot.paramMap.get('date')
     console.log(this.state, this.date)
-    // this.getData()
-    
-    // this.getTestData();
-
-    // this.filterStateDate('2021-10-31', 'Malaysia'); 
-    // date as of last data
     this.filterStateDate(this.date, this.state);
-
-    // this.getFirestoreData();
   }
-
-  // async getTestData() {
-  //   let id = '0jUYSkMg6PbSXD5KPP7o'
-  //   await this.fb.testRecord(id).then((res: any) => {
-  //     this.test_data = res;
-  //     console.log(this.test_data)
-  //   });
-  // }
 
   async getData() {
     await this.fb.getAllRecords().then((res => {
@@ -133,13 +117,6 @@ export class VaccinationPage implements OnInit {
     })
   }
 
-  getFirestoreData() {
-    this.fb.readAllRecords().then(res => {
-      this.all_data = res;
-      // console.log(this.all_data)
-    })
-  }
-
   async selectStateDate() {
     const modal = await this.moc.create({
       component: ModalStateDatePage,
@@ -149,11 +126,6 @@ export class VaccinationPage implements OnInit {
         date: this.vaccine_data.date,
       },
     });
-
-    // modal.onDidDismiss().then((res) => {
-    //   this.filterStateDate(this.selected_strategy);
-    // });
-
     return await modal.present();
   }
 

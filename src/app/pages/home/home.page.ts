@@ -60,6 +60,8 @@ export class HomePage implements OnInit {
   public first_date: any;
   public latest_date: any;
   public sd_data: any;
+  public state: string;
+  public date: string;
 
   constructor(
     public moc: ModalController,
@@ -73,7 +75,6 @@ export class HomePage implements OnInit {
   async latestDate() {
     await this.fb.getLastEntryDate().then(res => {
       this.latest_date = res
-      // console.log("Latest", this.latest_date)
     }).then(() => {
       this.filterState('Malaysia');
       this.fb.getDateRecord(this.latest_date).then(res => {
@@ -125,11 +126,6 @@ export class HomePage implements OnInit {
         date: this.summary_data.date,
       },
     });
-
-    // modal.onDidDismiss().then((res) => {
-    //   this.filterStateDate(this.selected_strategy);
-    // });
-
     return await modal.present();
   }
 

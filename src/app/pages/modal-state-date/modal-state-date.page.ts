@@ -14,7 +14,7 @@ export class ModalStateDatePage implements OnInit {
   selected_state: string;
   selected_date: any;
   list_states: any = [
-    {name: 'Malaysia'},
+    {name: 'malaysia'},
     {name: 'Johor'},
     {name: 'Kedah'},
     {name: 'Kelantan'},
@@ -50,6 +50,10 @@ export class ModalStateDatePage implements OnInit {
     this.mc.dismiss({
       'dismissed': true
     })
+  }
+
+  capitalizeFirstLetter(string) {
+    return string[0].toUpperCase() + string.slice(1);
   }
 
 }

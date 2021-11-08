@@ -105,6 +105,26 @@ export class FirebaseService {
   }
 
   getStateDateRecords(date, state) {
+    this.nat_data.daily_partial = 0
+    this.nat_data.daily_full = 0
+    this.nat_data.daily = 0
+    this.nat_data.daily_partial_child = 0
+    this.nat_data.daily_full_child = 0
+    this.nat_data.daily_booster = 0
+    this.nat_data.cumul_partial = 0
+    this.nat_data.cumul_full = 0
+    this.nat_data.cumul = 0
+    this.nat_data.cumul_partial_child = 0
+    this.nat_data.cumul_full_child = 0
+    this.nat_data.cumul_booster = 0
+    this.nat_data.pfizer1 = 0
+    this.nat_data.pfizer2 = 0
+    this.nat_data.sinovac1 = 0
+    this.nat_data.sinovac2 = 0
+    this.nat_data.astra1 = 0
+    this.nat_data.astra2 = 0
+    this.nat_data.cansino = 0
+    this.nat_data.pending = 0
     let filter: any;
     return new Promise((resolve, reject) => {
       firebase
@@ -116,7 +136,6 @@ export class FirebaseService {
       .then((res) => {
         res.forEach(data => {
           let dt = data.val()
-          // console.log(dt)
           if (state.toLowerCase() == ('Malaysia').toLowerCase()) {
             this.nat_data.daily_partial = this.nat_data.daily_partial +  Number(dt.daily_partial)
             this.nat_data.daily_full = this.nat_data.daily_full +  Number(dt.daily_full)
@@ -138,15 +157,11 @@ export class FirebaseService {
             this.nat_data.astra2 = this.nat_data.astra2 +  Number(dt.astra2)
             this.nat_data.cansino = this.nat_data.cansino +  Number(dt.cansino)
             this.nat_data.pending = this.nat_data.pending +  Number(dt.pending)
-
-            // console.log("DT", dt)
-            // console.log("NAT", this.nat_data)
           }
           else if (state.toLowerCase() == dt.state.toLowerCase()) {
             filter = dt
             console.log("FB",dt)
           }
-          // console.log("getStateDate", data.val())
         })
         if (state.toLowerCase() == ('Malaysia').toLowerCase()) {
           this.nat_data.date = date
@@ -176,10 +191,7 @@ export class FirebaseService {
           let data = result.val()
           let statename = data[`state`].toLowerCase().replace('w.p. ', '').replace(' ', '_')
           this.sum_state_data[statename] = data[`cumul_full`]
-          // console.log(data[`state`].toLowerCase().replace('w.p. ', '').replace(' ', '_'))
         })
-        // console.log("SUM STATE DATA", this.sum_state_data)
-        // console.log("Date Record", res.val())
         resolve(this.sum_state_data)
       }), (error: any) => {
         reject(error);
@@ -228,64 +240,4 @@ export class FirebaseService {
       }
     })
   }
-
-  // testRecord(id) {
-  //   return new Promise((resolve, reject) => {
-  //     firebase
-  //     .firestore().collection(`limit`).doc(id).get().then((res) => {
-  //       try {
-  //         resolve(res.data());
-  //       }
-  //       catch
-  //       {
-  //         console.log(id);
-  //       }
-  //     }, err => {
-  //       reject(err);
-  //       console.log(err);
-  //     })
-  //   })
-  // }
-
-  readAllRecords() {
-    let firestore_db = firebase.firestore();
-    // let list_top_20 = []
-    let data: any;
-    return new Promise((resolve, reject) => {
-
-      firestore_db.collection(`limit`).get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          // doc.data() is never undefined for query doc snapshots
-          // console.log(doc.id, " => ", doc.data());
-          // console.log(doc.data())
-          // console.log(this.list_top_20)
-          // list_top_20.push(doc.id)
-          // console.log(list_top_20)
-          data = doc.data()
-        });
-        resolve(data);
-        // return list_top_20
-      }, err => {
-        reject(err);
-      });
-    })
-  }
-
-  // GetUserCourse(user: any = []) {
-  //   let user_cred = user[0];
-  //   if (user.length !== 0) {
-  //     return new Promise((resolve, reject) => {
-  //       firebase
-  //         .database()
-  //         .ref(`ilhami_web_app/account/user/${user_cred[`uid`]}`)
-  //         .once('value')
-  //         .then((res) => {
-  //           resolve(res.val());
-  //         }),
-  //         (error: any) => {
-  //           reject(error);
-  //         };
-  //     });
-  //   }
-  // }
 }
