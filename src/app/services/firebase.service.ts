@@ -52,6 +52,41 @@ export class FirebaseService {
     cansino: 0,
     pending: 0,
   };
+  sum_state_data: {
+    johor: number;
+    kedah: number;
+    kelantan: number;
+    melaka: number;
+    negeri_sembilan: number;
+    pahang: number;
+    perak: number;
+    perlis: number;
+    pulau_pinang: number;
+    sabah: number;
+    sarawak: number;
+    selangor: number;
+    terengganu: number;
+    kuala_lumpur: number;
+    labuan: number;
+    putrajaya: number;
+  } = {
+    johor: 0,
+    kedah: 0,
+    kelantan: 0,
+    melaka: 0,
+    negeri_sembilan: 0,
+    pahang: 0,
+    perak: 0,
+    perlis: 0,
+    pulau_pinang: 0,
+    sabah: 0,
+    sarawak: 0,
+    selangor: 0,
+    terengganu: 0,
+    kuala_lumpur: 0,
+    labuan: 0,
+    putrajaya: 0,
+  }
 
   constructor() { }
 
@@ -81,7 +116,7 @@ export class FirebaseService {
       .then((res) => {
         res.forEach(data => {
           let dt = data.val()
-          console.log(dt)
+          // console.log(dt)
           if (state == 'Malaysia') {
             this.nat_data.daily_partial = this.nat_data.daily_partial +  Number(dt.daily_partial)
             this.nat_data.daily_full = this.nat_data.daily_full +  Number(dt.daily_full)
@@ -104,8 +139,8 @@ export class FirebaseService {
             this.nat_data.cansino = this.nat_data.cansino +  Number(dt.cansino)
             this.nat_data.pending = this.nat_data.pending +  Number(dt.pending)
 
-            console.log("DT", dt)
-            console.log("NAT", this.nat_data)
+            // console.log("DT", dt)
+            // console.log("NAT", this.nat_data)
           }
           else if (state == dt.state) {
             filter = dt
@@ -121,6 +156,72 @@ export class FirebaseService {
           console.log("Data", filter)
           resolve(filter);
         }
+      }), (error: any) => {
+        reject(error);
+      }
+    })
+  }
+
+  getDateRecord(date) {
+    return new Promise((resolve, reject) => {
+      firebase
+      .database()
+      .ref(`vac_data`)
+      .orderByChild('date')
+      .equalTo(date)
+      .once('value')
+      .then((res) => {
+        res.forEach(result => {
+          let data = result.val()
+          let statename = data[`state`].toLowerCase().replace('w.p. ', '').replace(' ', '_')
+          this.sum_state_data[statename] = data[`cumul_full`]
+          // console.log(data[`state`].toLowerCase().replace('w.p. ', '').replace(' ', '_'))
+        })
+        // console.log("SUM STATE DATA", this.sum_state_data)
+        // console.log("Date Record", res.val())
+        resolve(this.sum_state_data)
+      }), (error: any) => {
+        reject(error);
+      }
+    })
+  }
+
+  getFirstEntryDate() {
+    let data: any;
+    return new Promise((resolve, reject) => {
+      firebase
+      .database()
+      .ref(`vac_data`)
+      .orderByChild('date')
+      .limitToFirst(1)
+      .once('value')
+      .then((res) => {
+        res.forEach(result => {
+          // console.log(result.val().date)
+          data = result.val().date
+        })
+        resolve(data);
+      }), (error: any) => {
+        reject(error);
+      }
+    })
+  }
+
+  getLastEntryDate() {
+    let data: any;
+    return new Promise((resolve, reject) => {
+      firebase
+      .database()
+      .ref(`vac_data`)
+      .orderByChild('date')
+      .limitToLast(1)
+      .once('value')
+      .then((res) => {
+        res.forEach(result => {
+          // console.log(result.val().date)
+          data = result.val().date
+        })
+        resolve(data);
       }), (error: any) => {
         reject(error);
       }
