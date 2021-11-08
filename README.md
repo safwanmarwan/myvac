@@ -12,5 +12,5 @@ $ npm install
 ```
 4. Run the app locally using command
 ```
-$ ionic serve
+$ ionic serve --lab
 ```
