@@ -117,7 +117,7 @@ export class FirebaseService {
         res.forEach(data => {
           let dt = data.val()
           // console.log(dt)
-          if (state == 'Malaysia') {
+          if (state.toLowerCase() == ('Malaysia').toLowerCase()) {
             this.nat_data.daily_partial = this.nat_data.daily_partial +  Number(dt.daily_partial)
             this.nat_data.daily_full = this.nat_data.daily_full +  Number(dt.daily_full)
             this.nat_data.daily = this.nat_data.daily +  Number(dt.daily)
@@ -142,12 +142,13 @@ export class FirebaseService {
             // console.log("DT", dt)
             // console.log("NAT", this.nat_data)
           }
-          else if (state == dt.state) {
+          else if (state.toLowerCase() == dt.state.toLowerCase()) {
             filter = dt
+            console.log("FB",dt)
           }
           // console.log("getStateDate", data.val())
         })
-        if (state == 'Malaysia') {
+        if (state.toLowerCase() == ('Malaysia').toLowerCase()) {
           this.nat_data.date = date
           this.nat_data.state = state
           console.log("Data", this.nat_data)

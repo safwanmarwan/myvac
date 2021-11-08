@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { ModalStateDatePage } from '../modal-state-date/modal-state-date.page';
@@ -61,18 +62,26 @@ export class VaccinationPage implements OnInit {
   public test_data: any;
   public all_data: any;
   public sd_data: any;
+  public state: string;
+  public date: string;
 
   constructor(
     public moc: ModalController,
-    public fb: FirebaseService
+    public fb: FirebaseService,
+    private ar: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.state = this.ar.snapshot.paramMap.get('state')
+    this.date = this.ar.snapshot.paramMap.get('date')
+    console.log(this.state, this.date)
     // this.getData()
     
     // this.getTestData();
 
-    this.filterStateDate('2021-10-31', 'Malaysia'); // date as of last data
+    // this.filterStateDate('2021-10-31', 'Malaysia'); 
+    // date as of last data
+    this.filterStateDate(this.date, this.state);
 
     // this.getFirestoreData();
   }
@@ -95,29 +104,30 @@ export class VaccinationPage implements OnInit {
   async filterStateDate(date, state) {
     await this.fb.getStateDateRecords(date, state).then(res => {
       this.sd_data = res
+      console.log("sd_data",this.sd_data)
 
       this.vaccine_data.date = this.sd_data.date
       this.vaccine_data.state = this.sd_data.state
-      this.vaccine_data.daily_partial = this.sd_data.daily_partial
-      this.vaccine_data.daily_full = this.sd_data.daily_full
-      this.vaccine_data.daily = this.sd_data.daily
-      this.vaccine_data.daily_partial_child = this.sd_data.daily_partial_child
-      this.vaccine_data.daily_full_child = this.sd_data.daily_full_child
-      this.vaccine_data.daily_booster = this.sd_data.daily_booster
-      this.vaccine_data.cumul_partial = this.sd_data.cumul_partial
-      this.vaccine_data.cumul_full = this.sd_data.cumul_full
-      this.vaccine_data.cumul = this.sd_data.cumul
-      this.vaccine_data.cumul_partial_child = this.sd_data.cumul_partial_child
-      this.vaccine_data.cumul_full_child = this.sd_data.cumul_full_child
-      this.vaccine_data.cumul_booster = this.sd_data.cumul_booster
-      this.vaccine_data.pfizer1 = this.sd_data.pfizer1
-      this.vaccine_data.pfizer2 = this.sd_data.pfizer2
-      this.vaccine_data.sinovac1 = this.sd_data.sinovac1
-      this.vaccine_data.sinovac2 = this.sd_data.sinovac2
-      this.vaccine_data.astra1 = this.sd_data.astra1
-      this.vaccine_data.astra2 = this.sd_data.astra2
-      this.vaccine_data.cansino = this.sd_data.cansino
-      this.vaccine_data.pending = this.sd_data.pending
+      this.vaccine_data.daily_partial = Number(this.sd_data.daily_partial)
+      this.vaccine_data.daily_full = Number(this.sd_data.daily_full)
+      this.vaccine_data.daily = Number(this.sd_data.daily)
+      this.vaccine_data.daily_partial_child = Number(this.sd_data.daily_partial_child)
+      this.vaccine_data.daily_full_child = Number(this.sd_data.daily_full_child)
+      this.vaccine_data.daily_booster = Number(this.sd_data.daily_booster)
+      this.vaccine_data.cumul_partial = Number(this.sd_data.cumul_partial)
+      this.vaccine_data.cumul_full = Number(this.sd_data.cumul_full)
+      this.vaccine_data.cumul = Number(this.sd_data.cumul)
+      this.vaccine_data.cumul_partial_child = Number(this.sd_data.cumul_partial_child)
+      this.vaccine_data.cumul_full_child = Number(this.sd_data.cumul_full_child)
+      this.vaccine_data.cumul_booster = Number(this.sd_data.cumul_booster)
+      this.vaccine_data.pfizer1 = Number(this.sd_data.pfizer1)
+      this.vaccine_data.pfizer2 = Number(this.sd_data.pfizer2)
+      this.vaccine_data.sinovac1 = Number(this.sd_data.sinovac1)
+      this.vaccine_data.sinovac2 = Number(this.sd_data.sinovac2)
+      this.vaccine_data.astra1 = Number(this.sd_data.astra1)
+      this.vaccine_data.astra2 = Number(this.sd_data.astra2)
+      this.vaccine_data.cansino = Number(this.sd_data.cansino)
+      this.vaccine_data.pending = Number(this.sd_data.pending)
     
       console.log("filterStateDate(" + date + ", " + state + ")" , this.sd_data)
     })
@@ -149,6 +159,10 @@ export class VaccinationPage implements OnInit {
 
   numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  capitalizeFirstLetter(string) {
+    return string[0].toUpperCase() + string.slice(1);
   }
 
 }

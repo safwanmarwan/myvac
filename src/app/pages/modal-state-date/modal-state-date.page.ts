@@ -14,11 +14,23 @@ export class ModalStateDatePage implements OnInit {
   selected_state: string;
   selected_date: any;
   list_states: any = [
-    {name: "Malaysia"},
-    {name: "Selangor"},
-    {name: "Kuala Lumpur"},
-    {name: "Melaka"},
-    {name: "Pahang"},
+    {name: 'Malaysia'},
+    {name: 'Johor'},
+    {name: 'Kedah'},
+    {name: 'Kelantan'},
+    {name: 'Melaka'},
+    {name: 'Negeri Sembilan'},
+    {name: 'Pahang'},
+    {name: 'Perak'},
+    {name: 'Perlis'},
+    {name: 'Pulau Pinang'},
+    {name: 'Sabah'},
+    {name: 'Sarawak'},
+    {name: 'Selangor'},
+    {name: 'Terengganu'},
+    {name: 'W.P. Kuala Lumpur'},
+    {name: 'W.P. Labuan'},
+    {name: 'W.P. Putrajaya'}
   ];
 
   constructor(

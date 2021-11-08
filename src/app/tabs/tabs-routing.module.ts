@@ -12,8 +12,13 @@ const routes: Routes = [
         loadChildren: () => import('../pages/home/home.module').then(m => m.HomePageModule)
       },
       {
-        path: 'vaccination',
+        path: 'vaccination/:state/:date',
         loadChildren: () => import('../pages/vaccination/vaccination.module').then(m => m.VaccinationPageModule)
+      },
+      {
+        path: 'vaccination',
+        redirectTo: '/vaccination/malaysia/2021-10-31',
+        pathMatch: 'full'
       },
       {
         path: '',

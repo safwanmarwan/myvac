@@ -30,15 +30,6 @@
                 </ion-row>
             </ion-card-header>
             <ion-card-content>
-              <!-- <ion-row>
-                <ion-col style="padding-left: 5px;">
-                  <p style="font-size: 16px; font-weight: 500;">Total</p>
-                  <p>Fully Vaccinated : 24, 625, 458</p>
-                  <p>Partially Vaccinated : 25, 516, 476</p>
-                  <p>Received Booster : 81, 465</p>
-                </ion-col>
-              </ion-row> -->
-
               <ion-row>
                 <ion-col>
                   <ion-list lines="none">
@@ -57,26 +48,10 @@
                   </ion-list>
                 </ion-col>
               </ion-row>
-              <!-- <ion-row>
-                <ion-col style="padding-left: 5px;">
-                  <p style="font-size: 16px; font-weight: 500;">Adults</p>
-                  <p style="color: var(--ion-color-success);">Fully Vaccinated : 75.4%</p>
-                  <p>Partially Vaccinated : 2.7%</p>
-                  
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col style="padding-left: 5px;">
-                  <p style="font-size: 16px; font-weight: 500;">Adolescents</p>
-                  <p>Fully Vaccinated : 75.4%</p>
-                  <p>Partially Vaccinated : 2.7%</p>
-                </ion-col>
-              </ion-row> -->
             </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
-
     <ion-row>
       <ion-col>
         <ion-card>
@@ -90,43 +65,12 @@
                     </ion-col>
                 </ion-row>
             </ion-card-header>
-
-            <!-- <ion-card-content>
-              <ion-row>
-                <ion-col class="ion-no-padding" style="padding-left: 5px;">
-                  <p><ion-text>Malaysia</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Sarawak</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Perlis</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Kelantan</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Terengganu</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Perak</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Johor</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Pulau Pinang</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Pahang</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Melaka</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Sabah</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Kedah</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Kuala Lumpur</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Negeri Sembilan</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Selangor</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Labuan</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                  <p><ion-text>Putrajaya</ion-text><ion-text class="ion-float-right">75.4%</ion-text></p>
-                </ion-col>
-              </ion-row>
-            </ion-card-content> -->
-
             <ion-card-content>
               <ion-row>
                 <ion-col>
                   
                   <ion-list lines="none">
-                    <!-- <ion-item>
-                      <ion-label>Malaysia</ion-label>
-                      <ion-label slot="end">75.4%</ion-label>
-                    </ion-item> -->
-
-                    <!-- <ion-item><ion-text>Malaysia</ion-text><ion-text slot="end" style="font-weight: 600;">75.4%</ion-text></ion-item> -->
-
+                  
                     <ion-item><ion-text>Johor</ion-text><ion-text slot="end" style="font-weight: 600;">{{numberWithCommas(summary_data.cumul_johor)}}</ion-text></ion-item>
                     <ion-item><ion-text>Kedah</ion-text><ion-text slot="end" style="font-weight: 600;">{{numberWithCommas(summary_data.cumul_kedah)}}</ion-text></ion-item>
                     <ion-item><ion-text>Kelantan</ion-text><ion-text slot="end" style="font-weight: 600;">{{numberWithCommas(summary_data.cumul_kelantan)}}</ion-text></ion-item>
@@ -144,7 +88,7 @@
                     <ion-item><ion-text>Labuan</ion-text><ion-text slot="end" style="font-weight: 600;">{{numberWithCommas(summary_data.cumul_labuan)}}</ion-text></ion-item>
                     <ion-item><ion-text>Putrajaya</ion-text><ion-text slot="end" style="font-weight: 600;">{{numberWithCommas(summary_data.cumul_putrajaya)}}</ion-text></ion-item>
                   </ion-list>
-
+                  
                 </ion-col>
               </ion-row>
             </ion-card-content>
@@ -152,7 +96,7 @@
             <ion-card-content>
               <ion-row>
                 <ion-col size="12" class="ion-no-padding" style="padding-left: 5px;">
-                  <ion-button expand="block" (click)="selectStateDate()">Select State</ion-button>
+                  <ion-button expand="block" (click)="selectStateDate()" routerLink="vaccination/{{state}}/{{date}}" routerDirection="forward">Select State</ion-button>
                 </ion-col>
               </ion-row>
             </ion-card-content>
