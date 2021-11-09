@@ -73,6 +73,9 @@ export class HomePage implements OnInit {
   }
 
   async latestDate() {
+    await this.fb.getFirstEntryDate().then(res => {
+      this.first_date = res
+    })
     await this.fb.getLastEntryDate().then(res => {
       this.latest_date = res
     }).then(() => {
@@ -96,6 +99,7 @@ export class HomePage implements OnInit {
         this.summary_data.cumul_putrajaya = Number(res[`putrajaya`])
       })
     })
+    console.log("DATE2", this.first_date, this.latest_date)
   }
 
   async filterState(state) {

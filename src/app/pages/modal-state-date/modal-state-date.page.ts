@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-modal-state-date',
@@ -33,19 +34,30 @@ export class ModalStateDatePage implements OnInit {
     {name: 'W.P. Labuan'},
     {name: 'W.P. Putrajaya'}
   ];
+  start_date: any;
+  end_date: any;
 
   constructor(
+    private fb: FirebaseService,
     private mc: ModalController,
     private router: Router
   ) {
   }
 
   ngOnInit() {
+    this.fb.getFirstEntryDate().then(res => {
+      this.start_date = res
+    }).then(() => {
+      this.fb.getLastEntryDate().then(result => {
+        this.end_date = result
+      })
+    })
+    console.log("DATE3", this.start_date, this.end_date)
   }
 
   selectStateDate() {
     this.date = this.formatDate(this.date)
-    
+
     console.log("Successfully select state " + this.state + " as for " + this.date);
     this.router.navigate(['../vaccination/' + this.state + '/' + this.date])
     this.closeModal();
