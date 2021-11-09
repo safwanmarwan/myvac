@@ -74,6 +74,10 @@ export class VaccinationPage implements OnInit {
   ngOnInit() {
     this.state = this.ar.snapshot.paramMap.get('state')
     this.date = this.ar.snapshot.paramMap.get('date')
+
+    var dateFormat = this.date.split('T')[0]
+    this.date = dateFormat
+    
     console.log(this.state, this.date)
     this.filterStateDate(this.date, this.state);
   }

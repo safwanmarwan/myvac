@@ -76,7 +76,7 @@ export class HomePage implements OnInit {
     await this.fb.getLastEntryDate().then(res => {
       this.latest_date = res
     }).then(() => {
-      this.filterState('Malaysia');
+      this.filterState('malaysia');
       this.fb.getDateRecord(this.latest_date).then(res => {
         this.summary_data.cumul_johor = Number(res[`johor`])
         this.summary_data.cumul_kedah = Number(res[`kedah`])
@@ -118,6 +118,8 @@ export class HomePage implements OnInit {
   }
 
   async selectStateDate() {
+    console.log("HOMEPAGE", this.summary_data.state)
+    console.log(this.summary_data.date)
     const modal = await this.moc.create({
       component: ModalStateDatePage,
       backdropDismiss: false,
