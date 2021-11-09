@@ -131,4 +131,9 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
+  formatDate(date) {
+    var dateFormat = date.split('T')[0]
+    return dateFormat
+  }
+
 }

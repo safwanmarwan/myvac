@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -34,7 +35,8 @@ export class ModalStateDatePage implements OnInit {
   ];
 
   constructor(
-    private mc: ModalController
+    private mc: ModalController,
+    private router: Router
   ) {
   }
 
@@ -42,7 +44,10 @@ export class ModalStateDatePage implements OnInit {
   }
 
   selectStateDate() {
+    this.date = this.formatDate(this.date)
+    
     console.log("Successfully select state " + this.state + " as for " + this.date);
+    this.router.navigate(['../vaccination/' + this.state + '/' + this.date])
     this.closeModal();
   }
 
@@ -54,6 +59,11 @@ export class ModalStateDatePage implements OnInit {
 
   capitalizeFirstLetter(string) {
     return string[0].toUpperCase() + string.slice(1);
+  }
+
+  formatDate(date) {
+    var dateFormat = date.split('T')[0]
+    return dateFormat
   }
 
 }

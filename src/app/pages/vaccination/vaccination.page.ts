@@ -73,12 +73,7 @@ export class VaccinationPage implements OnInit {
 
   ngOnInit() {
     this.state = this.ar.snapshot.paramMap.get('state')
-    this.date = this.ar.snapshot.paramMap.get('date')
-
-    var dateFormat = this.date.split('T')[0]
-    this.date = dateFormat
-    
-    console.log(this.state, this.date)
+    this.date = this.formatDate(this.ar.snapshot.paramMap.get('date'))
     this.filterStateDate(this.date, this.state);
   }
 
@@ -141,4 +136,8 @@ export class VaccinationPage implements OnInit {
     return string[0].toUpperCase() + string.slice(1);
   }
 
+  formatDate(date) {
+    var dateFormat = date.split('T')[0]
+    return dateFormat
+  }
 }
